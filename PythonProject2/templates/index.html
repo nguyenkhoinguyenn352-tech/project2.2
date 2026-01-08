@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flight Game – City Map</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .city {
+      background: #1e293b;
+      padding: 15px;
+      margin: 10px auto;
+      border-radius: 8px;
+      max-width: 500px;
+    }
+
+    .city span {
+      display: block;
+      margin: 4px 0;
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="400" style="border:2px solid black; background:white; display:block; margin:20px auto;"></canvas>
+    <h1 style="text-align:center;">🌍 Flight Game - Cities</h1>
+
+<div id="cities"></div>
+
+<script>
+
+  const cities = [
+    { name: "Tokyo", lat: 35.6762, lon: 139.6503, fuel_cost: 0.02, weather: "rain" },
+    { name: "London", lat: 51.5074, lon: -0.1278, fuel_cost: 0.03, weather: "wind" },
+    { name: "Dubai", lat: 25.2048, lon: 55.2708, fuel_cost: 0.04, weather: "hot" },
+    { name: "VIP City", lat: 40.7128, lon: -74.006, fuel_cost: 0.01, weather: "clear" }
+  ];
+
+  const container = document.getElementById("cities");
+
+  cities.forEach(city => {
+    const div = document.createElement("div");
+    div.className = "city";
+    div.innerHTML = `
+      <strong>${city.name}</strong>
+      <span>📍 Lat: ${city.lat}, Lon: ${city.lon}</span>
+      <span>⛽ Fuel cost: ${city.fuel_cost}</span>
+      <span>🌦 Weather: ${city.weather}</span>
+    `;
+    container.appendChild(div);
+  });
+</script>
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
+
+
